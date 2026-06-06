@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:login_reg_profile_ui/main.dart';
+import 'package:login_reg_profile_ui/profile_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -123,7 +124,14 @@ class RegistrationPage extends StatelessWidget {
                       width: double.infinity,
                       height: 55,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ProfilePage(),
+                            ),
+                          );
+                        },
                         style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
