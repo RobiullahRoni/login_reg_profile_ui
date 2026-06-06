@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:login_reg_profile_ui/registration_page.dart';
+import 'package:login_reg_profile_ui/main.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,12 +10,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: LoginPage());
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: RegistrationPage(),
+    );
   }
 }
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class RegistrationPage extends StatelessWidget {
+  const RegistrationPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +27,7 @@ class LoginPage extends StatelessWidget {
         width: double.infinity,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.blue, Colors.purple],
+            colors: [Colors.deepPurple, Colors.blue],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
@@ -44,13 +47,13 @@ class LoginPage extends StatelessWidget {
                   children: [
                     const CircleAvatar(
                       radius: 45,
-                      child: Icon(Icons.person, size: 50),
+                      child: Icon(Icons.person_add, size: 50),
                     ),
 
                     const SizedBox(height: 20),
 
                     const Text(
-                      "Welcome Back",
+                      "Create Account",
                       style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
@@ -60,11 +63,23 @@ class LoginPage extends StatelessWidget {
                     const SizedBox(height: 10),
 
                     const Text(
-                      "Login to your account",
+                      "Register to continue",
                       style: TextStyle(color: Colors.grey),
                     ),
 
                     const SizedBox(height: 25),
+
+                    TextField(
+                      decoration: InputDecoration(
+                        labelText: "Full Name",
+                        prefixIcon: const Icon(Icons.person),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                    ),
+
+                    const SizedBox(height: 15),
 
                     TextField(
                       decoration: InputDecoration(
@@ -89,17 +104,20 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
 
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 15),
 
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: TextButton(
-                        onPressed: () {},
-                        child: const Text("Forgot Password?"),
+                    TextField(
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        labelText: "Confirm Password",
+                        prefixIcon: const Icon(Icons.lock_outline),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
                       ),
                     ),
 
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 25),
 
                     SizedBox(
                       width: double.infinity,
@@ -112,7 +130,7 @@ class LoginPage extends StatelessWidget {
                           ),
                         ),
                         child: const Text(
-                          "LOGIN",
+                          "REGISTER",
                           style: TextStyle(fontSize: 18),
                         ),
                       ),
@@ -123,17 +141,17 @@ class LoginPage extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text("Don't have an account?"),
+                        const Text("Already have an account?"),
                         TextButton(
                           onPressed: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const RegistrationPage(),
+                                builder: (context) => const LoginPage(),
                               ),
                             );
                           },
-                          child: const Text("Sign Up"),
+                          child: const Text("Login"),
                         ),
                       ],
                     ),
